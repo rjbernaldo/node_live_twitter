@@ -4,24 +4,26 @@ window.onload = function() {
     , h      = document.body.clientHeight
     , socket = io.connect()
     , tweets = document.getElementById('tweets')
-    , filter  = document.getElementById('filter');
+    , filter = document.getElementById('filter');
 
   socket.on('connect', function() {
     console.log('User connected to tweet stream!');
   })
 
   socket.on('new message', function(data) {
-    // if (data.text.toLowerCase().indexOf(filter.value) >= 0) {
+    // data.text.toLowerCase().indexOf(filter.value) >= 0
+    if (data.geo && data.place && data.user) {
       var tweet_div = createDiv('tweet_tweet')
         , photo_div = createDiv('tweet_photo')
         , text_div = createDiv('tweet_text')
-        , main_div = createDiv('tweet_main');
+        , main_div = createDiv('tweet_main')
+        , place_text;
 
-      if (data.user != undefined) {
-        tweet_div.innerHTML = data.text;
-        photo_div.style.backgroundImage = "url(" + data.user.profile_image_url + ")";
-        text_div.innerHTML = data.user.name;
-      }
+      data.place ? place_text = data.place.name : place_text = "";
+
+      tweet_div.innerHTML = data.text;
+      photo_div.style.backgroundImage = "url(" + data.user.profile_image_url + ")";
+      text_div.innerHTML = data.user.name + "<br>" + place_text;
 
       main_div.style.left = Math.floor(Math.random(w) * 1000);
       main_div.style.top = Math.floor(Math.random(h/2 ) * 500);
@@ -33,7 +35,9 @@ window.onload = function() {
       setTimeout(function() {
         fadeTweet(tweets, main_div);
       }, 2000);
-    // }
+    } else {
+      console.log("Falsy data?", data);
+    }
   })
 }
 

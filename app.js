@@ -32,21 +32,11 @@ t = new twitter({
 
 // Twitter streaming
 io.sockets.on('connection', function() {
-  // if (search == "") {
-    // t.stream('statuses/sample', function(stream) {
-    //   stream.on('data', function(data){
-    //     if (data.id != null) {
-    //       io.sockets.emit('new message', data);
-    //     }
-    //   });
-    // });
-  // } else {
-    t.stream('filter', { track: "food" }, function(stream) {
-      stream.on('data', function(data){
-        if (data.id != null) {
-          io.sockets.emit('new message', data);
-        }
-      });
+  t.stream('filter', { 'locations': '-180,-90,180,90' }, function(stream) {
+    stream.on('data', function(data){
+      if (data.id != null) {
+        io.sockets.emit('new message', data);
+      }
     });
-  // }
+  });
 });
