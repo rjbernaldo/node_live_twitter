@@ -5,6 +5,7 @@
   "dependencies": {
     "socket.io": "*",
     "express": "*",
-    "twitter": "*"
+    "twitter": "*",
+    "node-env-file": "*"
   }
 }
