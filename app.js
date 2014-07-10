@@ -16,11 +16,11 @@ app.use('/', express.static(__dirname + '/public'));
 
 // Routes
 app.get('/', function(req,res) {
-  res.sendfile(__dirname + '/index.html')
-  search = req.query || ""
+  res.sendfile(__dirname + '/index.html');
+  search = req.query || "";
 });
 
-// Twitter login
+// Twitter auth
 env(__dirname + '/.env')
 t = new twitter({
   consumer_key: process.env.consumerkey,
