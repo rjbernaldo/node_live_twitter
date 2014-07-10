@@ -9,3 +9,21 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.photo {
+  height: 20px;
+  padding-top: 15px;
+  color: white;
+  text-align: center;
+  background-size: cover;
+}
+
+.text {
+  width: 100px;
+}
+
+.main {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+}
