@@ -4,56 +4,40 @@ window.onload = function() {
     , h      = document.body.clientHeight
     , socket = io.connect()
     , tweets = document.getElementById('tweets')
-    , filter = document.getElementById('filter');
+    , filter = document.getElementById('filter')
+    , map    = document.getElementById('map');
+
+  var options = {
+    center: new google.maps.LatLng(0,1),
+    zoom: 3
+  }
+  var m = new google.maps.Map(map, options);
 
   socket.on('connect', function() {
     console.log('User connected to tweet stream!');
   })
 
   socket.on('new message', function(data) {
-    // data.text.toLowerCase().indexOf(filter.value) >= 0
     if (data.geo && data.place && data.user) {
-      var tweet_div = createDiv('tweet_tweet')
-        , photo_div = createDiv('tweet_photo')
-        , text_div = createDiv('tweet_text')
-        , main_div = createDiv('tweet_main')
-        , place_text;
+      var coords = data.geo.coordinates
+        , text = data.text
+        , user = data.user.name
+        , image = data.user.profile_image_url
+        , geo = data.geo.coordinates
+        , place = "";
 
-      data.place ? place_text = data.place.name : place_text = "";
+      data.place ? place = data.place.name : place = "";
 
-      tweet_div.innerHTML = data.text;
-      photo_div.style.backgroundImage = "url(" + data.user.profile_image_url + ")";
-      text_div.innerHTML = data.user.name + "<br>" + place_text;
+      var tweet = new tweetMarker(m, text, user, image, place, new google.maps.LatLng(coords[0], coords[1]))
+      tweet.draw();
 
-      main_div.style.left = Math.floor(Math.random(w) * 1000);
-      main_div.style.top = Math.floor(Math.random(h/2 ) * 500);
-
-      massAppend(main_div, [tweet_div, text_div, photo_div]);
-
-      tweets.appendChild(main_div);
-
-      setTimeout(function() {
-        fadeTweet(tweets, main_div);
-      }, 2000);
     } else {
-      console.log("Falsy data?", data);
+      console.log("Falsy data?");
     }
   })
 }
 
 // HELPERS
-function createDiv(className) {
-  var div = document.createElement('div');
-  div.className = className;
-  return div
-}
-
-function massAppend(div, arr) {
-  arr.forEach(function(elem) {
-    div.appendChild(elem);
-  })
-}
-
 function fadeTweet(tweets, tweet, opacity) {
   opacity = opacity || 0;
   if (opacity <= 100) {
@@ -65,4 +49,40 @@ function fadeTweet(tweets, tweet, opacity) {
     tweet.style.opacity = 0;
     tweets.removeChild(tweet);
   }
+}
+
+function tweetMarker(map, text, username, image_url, place_text, geo) {
+  this.text = text;
+  this.name = username;
+  this.image = image_url;
+  this.place = place_text;
+  this.geo = geo;
+  this.setMap(map);
+}
+
+tweetMarker.prototype = new google.maps.OverlayView();
+
+tweetMarker.prototype.draw = function() {
+  var self = this
+    , div  = document.createElement('div');
+
+  div.style.border = '2px solid blue';
+  div.style.position = 'absolute';
+  div.innerHTML = this.text;
+
+  var panes = this.getPanes();
+  var overlay = panes.overlayLayer;
+  overlay.appendChild(div);
+
+  setTimeout(function() {
+    fadeTweet(overlay, div);
+  })
+
+  var point = this.getProjection().fromLatLngToDivPixel(this.geo);
+
+  if (point) {
+    div.style.left = point.x + 'px';
+    div.style.top = point.y + 'px';
+  }
+
 }

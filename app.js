@@ -5,7 +5,6 @@ var express = require('express')
   , util    = require('util')
   , twitter = require('twitter')
   , env     = require('node-env-file')
-  , search  = ""
   , t;
 
 // Welcome message
