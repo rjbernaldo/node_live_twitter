@@ -2,12 +2,13 @@
 
 ## Introduction
 
-Create a Twitter visualization project using Node.js, Express.js, & Socket.io. Grabs data from the Twitter Streaming API and projects them on a map generated from Google.
+Create a Twitter visualization project using Node.js, Express.js, & Socket.io. Grab data from the Twitter Streaming API and project them on a map generated from Google.
 
 ## Poject Milestones
 
 1. Create a constant connection from the server to the client for data transfer.
-2.
+2. Stream data constantly from server to client
+3. Plot data on a google map according to the tweet's location.
 
 ## Learning Objectives
 
@@ -17,10 +18,6 @@ Create a Twitter visualization project using Node.js, Express.js, & Socket.io. G
 
 ## Future areas of exploration
 
-1.
+1. Custom algorithim to determine trending topics.
 
-
-## References
-
-1.
-
+<!-- ## References -->
