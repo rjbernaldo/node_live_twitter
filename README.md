@@ -1,18 +1,13 @@
-# Node twitter visualization
+# Twitter Visualization
 
 ## Introduction
 
-Create a Twitter visualization project using Node.js, Express, & Socket.io. Grabs data from the Twitter Streaming API and projects them on a map generated from Google.
+Create a Twitter visualization project using Node.js, Express.js, & Socket.io. Grabs data from the Twitter Streaming API and projects them on a map generated from Google.
 
 ## Poject Milestones
 
 1. Create a constant connection from the server to the client for data transfer.
 2.
-
-<!-- 1. Functional Design and looking awesome
-2. Generate a podcast feed xml that is compliant to the podcast XML standard
-2. Upload the mp3 file to Amazon S3 and backed up with Amazon Cloudfront
-3. Environment hosted at Amazon EC2 (no heroku if possible) -->
 
 ## Learning Objectives
 
