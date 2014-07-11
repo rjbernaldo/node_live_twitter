@@ -8,11 +8,11 @@ var overlay
 
 window.onload = function() {
   var w      = document.body.clientWidth
-  , h      = document.body.clientHeight
-  , socket = io.connect()
-  , tweets = document.getElementById('tweets')
-  , filter = document.getElementById('filter')
-  , map    = document.getElementById('map');
+    , h      = document.body.clientHeight
+    , socket = io.connect()
+    , tweets = document.getElementById('tweets')
+    , filter = document.getElementById('filter')
+    , map    = document.getElementById('map');
 
   var options = {
     center: new google.maps.LatLng(50,10),
@@ -24,16 +24,16 @@ window.onload = function() {
     rotateControl: false,
     overviewMapControl: false,
     styles: [
-  {
-    "stylers": [
-      { "saturation": -100 },
-      { "gamma": 0.15 },
-      { "weight": 1.1 },
-      { "lightness": -35 },
-      { "visibility": "simplified" }
+      {
+        "stylers": [
+          { "saturation": -100 },
+          { "gamma": 0.15 },
+          { "weight": 1.1 },
+          { "lightness": -35 },
+          { "visibility": "simplified" }
+        ]
+      }
     ]
-  }
-]
 
   }
 
@@ -42,7 +42,7 @@ window.onload = function() {
   var allClients = [];
 
   socket.on('connection', function(socket) {
-    allClients.push(socket)
+    allClients.push(socket);
     console.log('User connected to tweet stream!');
   })
   socket.on('new message', projectAlgorithim);
@@ -170,7 +170,7 @@ trendMarker.prototype.del = function() {
 
 trendMarker.prototype.draw = function() {
   var div           = this.dom
-  , panes         = this.getPanes()
+    , panes         = this.getPanes()
 
   if (overlay == null) {
     overlay = panes.overlayLayer;

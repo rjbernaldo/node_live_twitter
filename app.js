@@ -9,7 +9,7 @@ var express = require('express')
 
 // Welcome message
 server.listen(3000);
-console.log("Node server started. Listening on port: 3000")
+console.log("Node server started. Listening on port: 3000");
 
 // Public folder
 app.use('/', express.static(__dirname + '/public'));
@@ -21,7 +21,7 @@ app.get('/', function(req,res) {
 });
 
 // Twitter auth
-env(__dirname + '/.env')
+env(__dirname + '/.env');
 t = new twitter({
   consumer_key: process.env.consumerkey,
   consumer_secret: process.env.consumersecret,
