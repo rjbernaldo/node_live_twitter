@@ -9,8 +9,8 @@ var express = require('express')
   , t;
 
 // Welcome message
-server.listen(3000);
-console.log("Node server started. Listening on port: 3000");
+server.listen(process.env.PORT || 5000);
+console.log("Node server started.");
 
 // Public folder
 app.use('/', express.static(__dirname + '/public'));
