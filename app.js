@@ -22,12 +22,12 @@ app.get('/', function(req,res) {
 });
 
 // Twitter auth
-env(__dirname + '/.env');
+// env(__dirname + '/.env');
 t = new twitter({
-  consumer_key: process.env.consumerkey,
-  consumer_secret: process.env.consumersecret,
-  access_token_key: process.env.accesstokenkey,
-  access_token_secret: process.env.accesstokensecret
+  consumer_key: ENV['consumerkey'] || process.env.consumerkey,
+  consumer_secret: ENV['consumersecret'] || process.env.consumersecret,
+  access_token_key: ENV['accesstokenkey'] || process.env.accesstokenkey,
+  access_token_secret: ENV['accesstokensecret'] || process.env.accesstokensecret
 });
 
 // Twitter streaming
