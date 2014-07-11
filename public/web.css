@@ -8,6 +8,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  position: absolute;
 }
 
 .photo {
@@ -19,11 +20,30 @@ body {
 }
 
 .text {
-  width: 100px;
+  height: auto;
+  width: auto;
 }
 
 .main {
   position: absolute;
   opacity: 1;
   background-color: white;
+}
+
+.trend {
+  position: absolute;
+  font-size: 20px;
+}
+
+#nav {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  padding: 1em;
+  background-color: rgba(0,0,0,1);
+  color: rgb(179, 179, 179);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  text-align: left;
 }
