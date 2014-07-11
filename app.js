@@ -5,6 +5,7 @@ var express = require('express')
   , util    = require('util')
   , twitter = require('twitter')
   , env     = require('node-env-file')
+  , tweetData
   , t;
 
 // Welcome message
@@ -31,14 +32,18 @@ t = new twitter({
 
 // Twitter streaming
 io.sockets.on('connection', function() {
-  io.sockets.on('disconnect', function() {
-    io.sockets.emit('disconnected');
-  })
-  t.stream('filter', { 'locations': '-180,-90,180,90' }, function(stream) {
-    stream.on('data', function(data){
-      if (data.id != null) {
-        io.sockets.emit('new message', data);
+
+});
+
+t.stream('filter', { 'locations': '-180,-90,180,90' }, function(stream) {
+  stream.on('data', function(data){
+    if (data.id != null) {
+      if (tweetData == null) {
+        tweetData = data;
+      } else {
+        io.sockets.emit('new message', tweetData);
+        tweetData = null;
       }
-    });
+    }
   });
 });

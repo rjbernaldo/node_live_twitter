@@ -7,5 +7,29 @@
     "express": "*",
     "twitter": "*",
     "node-env-file": "*"
-  }
+  },
+  "description": "## Introduction",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rjbernaldo/node_live_twitter.git"
+  },
+  "keywords": [
+    "twitter",
+    "streaming",
+    "api",
+    "node",
+    "socket.io",
+    "express"
+  ],
+  "author": "Rj Bernaldo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjbernaldo/node_live_twitter/issues"
+  },
+  "homepage": "https://github.com/rjbernaldo/node_live_twitter"
 }

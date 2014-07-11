@@ -1,10 +1,10 @@
 var overlay
-, collection = []
-, global = {
-  tweet_counter: 0,
-  tag_counter: 0,
-  trending_words: []
-};
+  , collection = []
+  , global     = {
+    tweet_counter: 0,
+    tag_counter: 0,
+    trending_words: []
+  };
 
 window.onload = function() {
   var w      = document.body.clientWidth
@@ -98,11 +98,11 @@ function projectAlgorithim(data) {
 }
 
 function WordObj(word, loc) {
-  this.word = word;
-  this.loc = loc;
+  this.word   = word;
+  this.loc    = loc;
   this.marker = null;
-  this.dom = createDiv('trend');
-  this.state = {
+  this.dom    = createDiv('trend');
+  this.state  = {
     counter: 10,
     color: 'black',
     fontSize: 10,
