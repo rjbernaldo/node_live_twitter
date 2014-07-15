@@ -31,10 +31,6 @@ t = new twitter({
 });
 
 // Twitter streaming
-io.sockets.on('connection', function() {
-
-});
-
 t.stream('filter', { 'locations': '-180,-90,180,90' }, function(stream) {
   stream.on('data', function(data){
     if (data.id != null) {

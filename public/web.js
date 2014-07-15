@@ -39,10 +39,7 @@ window.onload = function() {
 
   M = new google.maps.Map(map, options);
 
-  var allClients = [];
-
   socket.on('connection', function(socket) {
-    allClients.push(socket);
     console.log('User connected to tweet stream!');
   })
   socket.on('new message', projectAlgorithim);
@@ -93,7 +90,7 @@ function projectAlgorithim(data) {
       }
     });
   } else {
-    // console.log("Falsy data?");
+    // TODO: Falsy data? Reuse?
   }
 }
 
@@ -111,22 +108,7 @@ function WordObj(word, loc) {
   var self = this;
 
   function determineColor(level) {
-    switch(level) {
-      case 0:
-      return 'white';
-      break;
-      case 1:
-      return 'white';
-      break;
-      case 2:
-      return 'white';
-      break;
-      case 3:
-      return 'white';
-      break;
-      default:
-      return 'white';
-    }
+    // TODO: color algorithim according to level
   }
 
   setInterval(function() {
@@ -182,7 +164,7 @@ trendMarker.prototype.draw = function() {
   var point = this.getProjection().fromLatLngToDivPixel(this.loc);
 
   if (point) {
-    div.style.left = point.x - div.clientWidth/2 + 'px' ;
+    div.style.left = point.x - div.clientWidth/2 + 'px';
     div.style.top = point.y - div.clientHeight/2 + 'px';
   }
 }

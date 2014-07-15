@@ -8,7 +8,7 @@
     "twitter": "*",
     "node-env-file": "*"
   },
-  "description": "## Introduction",
+  "description": "Twitter visualization project using Node, Express, & Socket.io.",
   "main": "app.js",
   "devDependencies": {},
   "scripts": {
