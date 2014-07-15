@@ -1,4 +1,4 @@
-# Twitter Visualization
+# Twitter Visualisation
 
 Live website hosted over at Heroku: http://whispering-refuge-4120.herokuapp.com/
 
