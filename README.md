@@ -4,7 +4,7 @@ Live website hosted over at Heroku: http://whispering-refuge-4120.herokuapp.com/
 
 ## Introduction
 
-Twitter visualization project using Node, Express, & Socket.io. Grabs data from the Twitter Streaming API and project them on a map generated using Google maps.
+Twitter visualization project using Node.js, Express.js, & Socket.io. Grabs data from the Twitter Streaming API and project them on a map generated using Google maps.
 
 ## Poject Milestones
 
