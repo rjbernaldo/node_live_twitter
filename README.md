@@ -10,7 +10,7 @@ Twitter visualization project using Node.js, Express.js, & Socket.io. Grabs data
 
 1. Create a constant connection from the server to the client for data transfer.
 2. Continously stream data from server to client
-3. Plot data according to the tweet's geo location.
+3. Plot data according to the tweet's geo location
 
 ## Learning Objectives
 
